@@ -1,0 +1,73 @@
+<app-loading [show]="loading"></app-loading>
+<div class="container">
+  <div class="row" style="height: 90vh">
+    <div class="d-none d-lg-block col-6 cellphone-cover">
+      <div class=""></div>
+    </div>
+    <div class="col-md-12 col-lg-6">
+      <div class="d-flex flex-row align-items-center h-100">
+        <div class="mx-auto mx-lg-1">
+          <div class="signin-box">
+            <h1>Instagrão</h1>
+            <form [formGroup]="loginForm" class="p-3" (ngSubmit)="onSubmit()">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Telefone, nome de usuário ou email</mat-label>
+                <input matInput formControlName="user" />
+                <mat-error *ngIf="loginForm.get('user')?.invalid"
+                  >O campo de nome do usuário é obrigatório</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input [type]="inputType" matInput formControlName="password" />
+                <button
+                  [disabled]="loadingButton"
+                  *ngIf="inputType === 'password'"
+                  matSuffix
+                  mat-icon-button
+                  type="button"
+                  (click)="inputType = 'text'"
+                >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button
+                  [disabled]="loadingButton"
+                  *ngIf="inputType === 'text'"
+                  matSuffix
+                  mat-icon-button
+                  type="button"
+                  (click)="inputType = 'password'"
+                >
+                  <mat-icon>disabled_visible</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('password')?.invalid"
+                  >O campo de senha é obrigatório</mat-error
+                >
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="primary"
+                class="w-100 mt-3 mb-3"
+                type="submit"
+                [disabled]="loginForm.invalid || loadingButton"
+              >
+                Entrar
+                <span
+                  *ngIf="loadingButton"
+                  class="spinner-border spinner-border-sm m-2"
+                ></span>
+              </button>
+              <hr />
+              <div class="w-100 text-center pt-3 pb-3">
+                <a href="#">Esqueceu a senha?</a>
+              </div>
+            </form>
+          </div>
+          <div class="signup-box">
+            <p>Não tem conta ? <a href="#">Cadastre-se</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

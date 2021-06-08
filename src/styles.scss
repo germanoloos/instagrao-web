@@ -1,0 +1,36 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$instagrao-web-primary: mat-palette($mat-blue);
+$instagrao-web-accent: mat-palette($mat-pink, A200, A100, A400);
+$instagrao-web-warn: mat-palette($mat-red);
+
+$instagrao-web-theme: mat-light-theme(
+    (
+        color: (
+            primary: $instagrao-web-primary,
+            accent: $instagrao-web-accent,
+            warn: $instagrao-web-warn,
+        ),
+    )
+);
+
+@include angular-material-theme($instagrao-web-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    background-color: #fafafa !important;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+}
